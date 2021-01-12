@@ -1,0 +1,65 @@
+[Data]
+patch_x = 64
+patch_y = 64
+patch_z = 64
+data_name= KiTS19
+#BraTS18 LiTS17 LUNA16 KiTS19
+data_root=../data_root/patches/kidney_tumor_syn_tumor_64_6
+#brain_tumor_syn_tumor_64_1,kidney_tumor_syn_tumor_64_6,liver_tumor_syn_tumor_64_4,luna_tumor_syn_tumor_64_3
+split_radio=0.6
+
+[Network]
+generator=gatedilatericher
+#generator=Kumar,Dakai,unet,noneofall,dilate, gatedilate ,gatedilatericher
+discriminator=PatchGAN
+#discriminator=Kumar_discriminator,Dakai_discriminator,PatchGANDiscriminator,PatchGAN
+helper=SYNHelper_Dilate_Gate_Richer_Lcon_Lpercep_Lsty
+#helper=SYNHelper_Dakai,SYNHelper_Kumar,SYNHelper_None,SYNHelper_Dilate_Gate_Richer
+#helper= SYNHelper_Dilate_Gate_Richer_Lcon,SYNHelper_Dilate_Gate_Richer_Lcon_Lpercep,SYNHelper_Dilate_Gate_Richer_Lcon_Lpercep_Lsty
+
+[Save]
+save_dir = ../log/${Data:data_name}/${Network:generator}_${Network:helper}/${Network:discriminator}_${Run:gpu}_run_${Run:run_num}
+#save_dir = ../log/${Data:data_name}/${Network:generator}_${Network:helper}/${Network:discriminator}_${Run:gpu}_run_${Run:run_num}
+save_model_path = ${save_dir}/checkpoint
+eve_path =  ../log/${Data:data_name}/unet/seg_${Run:gpu}_run_${Run:run_num}
+config_file = ${save_dir}/configuration.txt
+load_dir = ${Save:save_dir}
+load_model_path = ${load_dir}/checkpoint
+tmp_dir=${save_dir}/tmp
+tensorboard_dir=${save_dir}/tensorboard
+log_file=${save_dir}/train_log.txt
+
+[Optimizer]
+learning_algorithm = adam
+learning_rate = 0.0002
+decay = .95
+beta_1 = .9
+beta_2 = .98
+epsilon = 1e-12
+max_patience = 20
+min_lrate = 1e-8
+
+[Run]
+N_epochs = 100
+train_batch_size = 4
+test_batch_size = 5
+gpu = 0
+gpu_count=0
+run_num = 0
+workers = 5
+validate_every_epoch = 5
+max_boundary_loss_factor_epoch=10
+printfreq=1
+lambda=2
+lambda_pixel=1
+tumor_loss_factor=20
+boundary_loss_factor=2
+percep_loss_factor=2
+style_loss_factor=2
+#lambda=2
+#lambda_pixel=1
+#tumor_loss_factor=50
+#boundary_loss_factor=40
+#percep_loss_factor=100
+#style_loss_factor=100
+
