@@ -1,6 +1,6 @@
 ### FRGAN
 
-**Free-form tumor synthesis in computed tomography images via richer generative adversarial network** published in Knowledge-Based Systems
+**Free-form tumor synthesis in computed tomography images via richer generative adversarial network(https://doi.org/10.1016/j.asoc.2020.106881)** published in Knowledge-Based Systems
 
 by [Qiangguo Jin](https://scholar.google.com/citations?user=USoKG48AAAAJ), [Hui Cui](https://scholars.latrobe.edu.au/display/lcui), [Changming Sun](https://vision-cdc.csiro.au/changming.sun/), [Zhaopeng Meng](http://cic.tju.edu.cn/info/1170/2451.htm), [Ran Su](http://www.escience.cn/people/suran/index.html).
 
@@ -29,6 +29,9 @@ If the code is helpful for your research, please consider citing:
         title = "Free-form tumor synthesis in computed tomography images via richer generative adversarial network",
         journal = "Knowledge-Based Systems",
         year = "2021",
+        volume = "218",
+        pages = "106753",
+        issn = "0950-7051",         
         author = "Qiangguo Jin, Hui Cui, Changming Sun, Zhaopeng Meng and Ran Su",
     }
 
